@@ -2,12 +2,11 @@
 
 import {useState} from "react";
 import {useSession} from "next-auth/react";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import Form from "../../components/Form";
-import {router} from "next/client";
 
 export default function CreatePrompt(){
-
+    const router = useRouter();
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
         prompt:"", tag:""
@@ -15,6 +14,7 @@ export default function CreatePrompt(){
     const {data:session} = useSession();
 
     const createPrompt = async (e)=>{
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         e.preventDefault();
         console.log(e)
         setSubmitting(true);
@@ -32,7 +32,7 @@ export default function CreatePrompt(){
             }
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
         finally {
             setSubmitting(false);

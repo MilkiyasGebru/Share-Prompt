@@ -15,6 +15,7 @@ const handler = NextAuth({
                     async authorize(credentials,req) {
                         console.log("This is the req",req)
                         console.log("This is the credentials",credentials)
+                        await ConnectToDatabase()
                         const authenticatedUser = await User.findOne({})
                         console.log("This is the authenticated user",authenticatedUser)
                         // return {username: credentials.username, password: credentials.password}
@@ -24,6 +25,7 @@ const handler = NextAuth({
     callbacks: {
         async session({session}) {
             console.log("This is the Session",session)
+            await ConnectToDatabase();
             const sessionUser = await User.findOne({email: session.user.email});
             session.user.id = sessionUser._id.toString();
             return session;
@@ -38,7 +40,7 @@ const handler = NextAuth({
             // }
         },
         async signOut({profile,session}) {
-            session = null
+            session = {}
             return true
         }
     },

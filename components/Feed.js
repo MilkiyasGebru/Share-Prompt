@@ -2,8 +2,8 @@
 import {useState, useEffect} from "react";
 import PromptCard from "./PromptCard";
 
-const PromptCardList = ({data, handleTagClick})=>{
-    return (<div className="mt-16">
+    const PromptCardList = ({data, handleTagClick})=>{
+    return (<div className="mt-16 flex gap-2">
         {data.map(post=>{
             return (<div key={post.tag}>
                 <PromptCard post={post} handleTagClick={handleTagClick}/>

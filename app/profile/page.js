@@ -5,10 +5,14 @@ import {useSession} from "next-auth/react"
 import {useRouter} from "next/navigation";
 
 import Profile from "../../components/Profile"
+import {router} from "next/client";
 
 export default function ProfilePage() {
     const {data:session} = useSession();
-    const handleEdit = async ()=>{}
+    const router = useRouter();
+    const handleEdit = async ()=>{
+        router.push("/")
+    }
     const handleDelete = async ()=>{}
     // console.log(session);
     // console.log(session?.user.id)

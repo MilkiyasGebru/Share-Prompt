@@ -12,12 +12,3 @@ export const GET = async (req,res)=> {
     }
 }
 
-export const PATCH = async (req,{params})=> {
-    try {
-        await ConnectToDatabase()
-
-    }
-    catch(err){
-        return new Response("Failed to update the prompts", {status:500})
-    }
-}

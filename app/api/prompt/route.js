@@ -11,3 +11,13 @@ export const GET = async (req,res)=> {
         return new Response("Failed to fetch the Prompts", {status:500})
     }
 }
+
+export const PATCH = async (req,{params})=> {
+    try {
+        await ConnectToDatabase()
+
+    }
+    catch(err){
+        return new Response("Failed to update the prompts", {status:500})
+    }
+}
